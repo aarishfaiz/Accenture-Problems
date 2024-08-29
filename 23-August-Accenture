@@ -1,0 +1,59 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class Codechef
+{
+    public static int secondLargestElement(int[] arr) {
+        int secondMax = Integer.MIN_VALUE;
+        int firstMax = Integer.MIN_VALUE;
+
+        for (int ele: arr) {
+            if (ele > firstMax) {
+                secondMax = firstMax;
+                firstMax = ele;
+
+
+            } else if (ele > secondMax && ele < firstMax) {
+                secondMax = ele;
+            }
+        }
+        return secondMax;
+    }
+
+    public static String replaceChar(String s, char a, char b) {
+        StringBuilder ans = new StringBuilder();
+
+        for (int i = 0; i < s.length(); i++) {
+            if (s.charAt(i) == a) {
+                ans.append(b);
+            } else if (s.charAt(i) == b) {
+                ans.append(a);
+            } else {
+                ans.append(s.charAt(i));
+            }
+        }
+
+        return ans.toString();
+    }
+    public static void main(String[] args) throws java.lang.Exception
+    {
+        int[] arr = {
+            1,
+            2,
+            3,
+            4,
+            4,
+            5,
+            5,
+            5
+        };
+
+
+        //System.out.println(secondLargestElement(arr));
+
+        String s = "codebasher";
+        System.out.println(replaceChar(s, 'c', 'b'));
+
+    }
+}
