@@ -1,0 +1,33 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class Codechef
+{
+    
+    public static int fibo(int n) {
+        if(n==0 || n == 1) return n;
+        
+        return fibo(n-1)+fibo(n-2);
+    }
+    
+    public static String numberToBinary(int n) {
+        if(n==0) return "0";
+        
+        StringBuilder ans = new StringBuilder();
+        
+        while(n>0) {
+            int digit = n%2;
+            ans.append(digit);
+            n = n/2;
+        }
+        
+        return ans.reverse().toString();
+    }
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		//System.out.println(fibo(1));
+		System.out.println(numberToBinary(0));
+
+	}
+}
