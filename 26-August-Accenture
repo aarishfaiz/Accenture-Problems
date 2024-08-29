@@ -1,0 +1,63 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class Codechef
+{
+    
+    public static int sufficSum(String a, String b) {
+        int i= a.length()-1;
+        int j=b.length()-1;
+        int len=0;
+        
+        while(i>=0 && j>=0 && a.charAt(i) == b.charAt(j)) {
+            len++;
+            i--;
+            j--;
+        }
+        
+        return len;
+    }
+    
+    public static String Rhyming(String [] s, String word) {
+        int maxLen = Integer.MIN_VALUE;
+        String ans = "";
+        
+        for(String bestWord: s) {
+            int currLen = sufficSum(bestWord, word);
+            
+            if(currLen > maxLen || (currLen == maxLen && bestWord.length() < ans.length())) {
+                
+                ans = bestWord;
+                maxLen = currLen;
+            }
+        }
+        return ans;
+    }
+    
+    public static int candayBuy(int[] arr, int m) {
+        int candy=0;
+        
+        for(int ele: arr) {
+            if(ele%5 == 0) {
+                candy++;
+            }else {
+                 if((m-ele) >= 0) {
+                    candy++;
+                }
+            }
+        }
+        return candy;
+    }
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		int [] arr = {5, 4, 15, 6 };
+// 		System.out.println(candayBuy(arr, 5));
+
+
+        String [] s = {"scooter","monitor","greater", "shutter"};
+        String a = "matter";
+        System.out.println(Rhyming(s, a));
+
+	}
+}
