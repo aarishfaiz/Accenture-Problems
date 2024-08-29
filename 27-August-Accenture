@@ -1,0 +1,34 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class Codechef
+{
+    
+    public static int headCount(String s) {
+        int hCount=0;
+        int score=0;
+        
+        for(int i=0;i<s.length();i++) {
+            if(s.charAt(i) == 'H') {
+                hCount++;
+                score += 2;
+            }else{
+                hCount=0;
+                score -= 1;
+            }
+            
+            if(hCount == 3) {
+                return score;
+            }
+        }
+        
+        return score;
+    }
+	public static void main (String[] args) throws java.lang.Exception
+	{
+	    String coin = "HHTTHHTHHH";
+	    System.out.println(headCount(coin));
+
+	}
+}
