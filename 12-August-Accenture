@@ -1,0 +1,53 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class Codechef
+{
+    public static boolean isPrime(int n) {
+        if(n<2) return false;
+        for(int i=2;i<= Math.sqrt(n);i++) {
+            if(n%i == 0) return false;
+        }
+        return true;
+    }
+    public static int isPrimeSum(int n) {
+        int i=2;
+        int sum=0;
+        while(i<n) {
+            if(isPrime(i)) {
+                sum += i;
+            }
+            i++;
+        }
+        return sum;
+    }
+    public static boolean magicalNumber(int n) {
+        int zeroCount=0;
+
+        while(n>0) {
+            if(n%2 == 0) zeroCount++;
+            n=n/2;
+        }
+        return (zeroCount%2 != 0);
+    }
+    
+    public static int magicalNumberTillN(int n) {
+        int i=1;
+        int count=0;
+        
+        while(i<=n) {
+            if(magicalNumber(i)) {
+                count++;
+            }
+            i++;
+        }
+        
+        return count;
+    }
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		System.out.println(isPrimeSum(10));
+
+	}
+}
