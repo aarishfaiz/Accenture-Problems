@@ -1,0 +1,79 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class Codechef
+{
+
+
+    // SLOT 1
+    public static String evenOddSequence(int[] arr) {
+        StringBuilder ans = new StringBuilder();
+
+        for (int ele: arr) {
+            if (ele % 2 == 0) {
+                ans.append("Even");
+            } else {
+                ans.append("Odd");
+            }
+        }
+        return ans.toString();
+    }
+    public static int countConsonants(String s) {
+        String vowels = "AEIOUaeiou";
+        int consonants = 0;
+
+        for (int i = 0; i < s.length(); i++) {
+            if (Character.isLetter(s.charAt(i)) && vowels.indexOf(s.charAt(i)) == -1) {
+                consonants++;
+            }
+        }
+        return consonants;
+    }
+
+
+    // SLOT-2
+
+    public static boolean isPrime(int n) {
+        if (n == 0 || n == 1) return false;
+
+        for (int i = 2; i <= Math.sqrt(n); i++) {
+            if (n % i == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static int sumOfPrimeIndex(int[] arr) {
+        int sum = 0;
+
+        for (int i = 0; i < arr.length; i++) {
+            if (isPrime(i)) {
+                sum += arr[i];
+            }
+        }
+        return sum;
+    }
+
+    public static int areaOfCircle(int d) {
+        int ans = (int)(3.14 * d * d);
+
+        return Math.round(ans);
+    }
+
+    public static void main(String[] args) throws java.lang.Exception
+    {
+        // int[] arr = {1,2,3,4,5,6,7,8,9};
+        // System.out.println(evenOddSequence(arr));
+
+        // String s = "ABC1";
+        // System.out.println(countConsonants(s));
+
+        // int [] arr = {10,20,30,40,50,60,70,80,90,100};
+        // System.out.println(sumOfPrimeIndex(arr));
+
+        System.out.println(areaOfCircle(5));
+
+    }
+}
