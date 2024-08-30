@@ -1,0 +1,73 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class Codechef {
+
+
+    public static int playList(String s, int k) {
+        int i = 0;
+        int j = 0;
+        int aCount = 0;
+        int maxCountA = 0;
+
+
+        while (j < k) {
+            if (s.charAt(j) == 'a') {
+                aCount++;
+            }
+            j++;
+        }
+
+        maxCountA = aCount;
+
+
+        while (j < s.length()) {
+            if (s.charAt(i) == 'a') {
+                aCount--;
+            }
+            if (s.charAt(j) == 'a') {
+                aCount++;
+            }
+            maxCountA = Math.max(maxCountA, aCount);
+            i++;
+            j++;
+        }
+
+        return maxCountA;
+    }
+
+    public static int equlibrium(int[] arr) {
+        int left = 0;
+        int totalSum = 0;
+
+        for (int ele: arr) {
+            totalSum += ele;
+        }
+        for (int i = 0; i < arr.length; i++) {
+            totalSum -= arr[i];
+
+            if (totalSum == left) return i;
+
+            left += arr[i];
+        }
+
+        return -1;
+    }
+
+    public static void main(String[] args) throws java.lang.Exception {
+        // String s = "abcaca";
+        // System.out.println(playList(s, 3));
+
+        int arr[] = {
+            -7,
+            1,
+            5,
+            2,
+            -4,
+            3,
+            0
+        };
+        System.out.println(equlibrium(arr));
+    }
+}
