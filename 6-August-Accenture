@@ -1,0 +1,43 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class Codechef
+{
+    public static String giveFirstKWordsOfString(String s, int k) {
+        StringBuilder ans = new StringBuilder();
+        String[] words = s.split("\\s+");
+        
+        int limit = Math.min(k, s.length());
+        
+        for(int i=0;i<limit;i++) {
+            ans.append(words[i]);
+            if(i < limit-1) {
+                ans.append(" ");
+            }
+        }
+        return ans.toString();
+    }
+    
+    public static int bulbCount(int [] arr) {
+        int count=0;
+        
+        for(int i=0;i<arr.length;i++) {
+            if(count % 2 == 0) {
+                if(arr[i] == 0) count++;
+            }else {
+                if(arr[i] == 1) count++;
+            }
+        }
+        return count;
+    }
+	public static void main (String[] args) throws java.lang.Exception
+	{
+// 		String a = "My Name is Aarish Faiz";
+// 		System.out.println(giveFirstKWordsOfString(a, 2));
+
+        int[] arr = {0,1,0,1};
+        System.out.println(bulbCount(arr));
+
+	}
+}
