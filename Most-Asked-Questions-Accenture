@@ -1,0 +1,68 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class Codechef
+{
+    // EuclideanDistance
+    public static double EuclideanDistance(int a, int b) {
+        int value = a*a + b*b;
+        float ans  = (float)Math.sqrt(value);
+        return Math.round(value);
+    }
+    
+    //  VALID PASSWORD
+    
+    public static boolean validPassword(String s) {
+        
+        String specialSymbol = "!@#$%^&*()_+~";
+        
+        if(s.length() < 4 || Character.isDigit(s.charAt(0))) return false;
+        
+        boolean upperCase = false;
+        boolean digit = false;
+        boolean specialChar = false;
+        
+        for(int i=0;i<s.length();i++) {
+            if(Character.isUpperCase(s.charAt(i))) {
+                upperCase = true;
+            }
+            if(Character.isDigit(s.charAt(i))) {
+                 digit = true;
+            }
+            if(s.charAt(i) == '/' || s.charAt(i) == ' ') return false;
+            if(specialSymbol.indexOf(s.charAt(i)) >= 0) {
+                specialChar = true;
+            } 
+        }
+        
+        return upperCase && digit && specialChar;
+    }
+    
+    // Binary Operation
+    
+    public static int binaryOperation(String s) {
+        int ans = s.charAt(0) - '0';
+        
+        for(int i=1;i<s.length();i += 2) {
+            char operant = s.charAt(i);
+            int b = s.charAt(i+1) - '0';
+            
+            if(operant == 'A') {
+                ans &= b;
+            }else if(operant == 'B') {
+                ans |= b;
+            }else  {
+                operant ^= b;
+            }
+        }
+            return ans;
+    }
+	public static void main (String[] args) throws java.lang.Exception
+	{
+// 	  System.out.println(EuclideanDistance(1,1));
+      //System.out.println(validPassword("Arish@1"));
+      System.out.println(binaryOperation("1A0B1C1"));
+
+	}
+}
