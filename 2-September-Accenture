@@ -1,0 +1,137 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class Codechef
+{
+    public static int specialFibo(int n) {
+        if (n == 0 || n == 1) return n;
+
+        int a = 1;
+        int b = 1;
+
+        for (int i = 2; i < n; i++) {
+            int c = (a * a + b * b) % 47;
+            a = b;
+            b = c;
+        }
+        return b;
+    }
+
+    public static int arrayIndexOperation(int[] arr) {
+        int sum = arr[0];
+        int xOr = arr[1];
+
+        for (int i = 2; i < arr.length; i++) {
+            if (i % 2 == 0) {
+                sum += arr[i];
+            } else {
+                xOr ^= arr[i];
+            }
+        }
+
+        return xOr + sum;
+    }
+
+    public static String maxLenofWord(String s) {
+        String[] words = s.split("\\.");
+        int maxLen = Integer.MIN_VALUE;
+        int len = 0;
+        String maxLenWord = "";
+
+        for (String word: words) {
+            if (word.length() > maxLen) {
+                maxLen = word.length();
+                maxLenWord = word;
+            }
+        }
+        return maxLenWord;
+    }
+
+    // REPEATED+++++
+    public static int areaOfCanopy(int d) {
+        double area = 3.14 * d * d;
+        return (int) area;
+    }
+
+    // REPEATED++++
+    public static String JackLabelNumber(int[] arr) {
+        StringBuilder ans = new StringBuilder();
+
+        for (int ele: arr) {
+            if (ele % 2 == 0) {
+                ans.append("Even");
+            } else {
+                ans.append("Odd");
+            }
+        }
+        return ans.toString();
+    }
+
+    public static int fatorial(int n) {
+        int ans = 1;
+        for (int i = 1; i <= n; i++) {
+            ans *= i;
+        }
+        return ans;
+    }
+
+    public static boolean isVowel(char ch) {
+        String v = "AEIOUaeiou";
+        if (v.indexOf(ch) >= 0) {
+            return true;
+        }
+        return false;
+    }
+
+
+    public static int formula(String s) {
+        HashMap < Character, Integer > freq = new HashMap < > ();
+        int totalConsonent = 0;
+
+        for (char ch: s.toCharArray()) {
+            if (Character.isLetter(ch) && !isVowel(ch)) {
+                totalConsonent++;
+                freq.put(ch, freq.getOrDefault(ch, 0) + 1);
+            }
+        }
+
+        int totalFatorial = fatorial(totalConsonent);
+
+        for (int value: freq.values()) {
+            int valueFactorial = fatorial(value);
+            totalFatorial /= valueFactorial;
+        }
+        return totalFatorial;
+    }
+
+    public static void main(String[] args) throws java.lang.Exception
+    {
+        //for(int i=1;i<10;i++) {
+        //    System.out.print(specialFibo(i)+" ");
+        //} 
+
+        int[] arr = {
+            1,
+            2,
+            4,
+            2,
+            1
+        };
+        //System.out.println(arrayIndexOperation(arr));
+
+        //String s  ="My.Name.is.AarishFaiz";
+        //System.out.println(maxLenofWord(s));
+
+        //System.out.println(areaOfCanopy(2));
+
+        //System.out.println(JackLabelNumber(arr));
+
+        //System.out.println(fatorial(10));
+
+        String a = "ybghjahebuyitob";
+        System.out.println(formula(a));
+
+
+    }
+}
