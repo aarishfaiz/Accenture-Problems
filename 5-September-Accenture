@@ -1,0 +1,102 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class Codechef
+{
+    public static int secondSmallestElement(int[] arr) {
+
+        // WAY-1++++++++
+
+        // PriorityQueue<Integer> pq = new PriorityQueue<>();
+
+        // for(int ele: arr) {
+        //     pq.add(ele);
+        // }
+
+        // pq.poll();
+
+        // return pq.poll();
+
+
+        // WAY - 2+++++++
+
+        //ArrayList<Integer> list = new ArrayList<>();
+
+        // for(int ele: arr) {
+        //     list.add(ele);
+        // }
+
+        // Collections.sort(list, (a,b) -> b - a);
+
+
+        // return list.get(arr.length - 2);
+
+
+        // WAY-3 +++++
+
+        Arrays.sort(arr);
+
+        return arr[1];
+    }
+
+    public static int countSetBit(int n) {
+        int count = 0;
+
+        while (n > 0) {
+            if (n % 2 == 1) count++;
+            n /= 2;
+        }
+        return count;
+    }
+
+    public static String matchScore(String[] s) {
+
+        StringBuilder res = new StringBuilder();
+
+        int countA = 0;
+        int countB = 0;
+
+        for (String word: s) {
+            String ans = word.substring(4, 5);
+
+            if (ans.equals("A")) {
+                countA++;
+            } else {
+                countB++;
+            }
+        }
+
+        if (countA > countB) {
+            res.append("Team-A");
+        } else if (countB > countA) {
+            res.append("Team-B");
+        } else {
+            res.append("Draw");
+        }
+
+        return res.toString();
+    }
+
+
+    public static void main(String[] args) throws java.lang.Exception
+    {
+        // 		int[] arr = {1,2,3,4,5,6,7,8,9};
+
+        // 		System.out.println(secondSmallestElement(arr));
+
+        // System.out.println(countSetBit(15));
+
+        //TeamA
+
+        String[] s = {
+            "TeamA",
+            "TeamA",
+            "TeamB",
+            "TeamB"
+        };
+
+        System.out.println(matchScore(s));
+
+    }
+}
