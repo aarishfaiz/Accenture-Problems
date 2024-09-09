@@ -23,27 +23,100 @@ class Codechef
         }
     }
 
-    //Repeated Question
-    public static String evenOddEle(int [] arr) {
+    public static String evenOddEle(int[] arr) {
         StringBuilder sb = new StringBuilder();
-        
-        for(int ele: arr) {
-            if(ele%2 == 0) {
+
+        for (int ele: arr) {
+            if (ele % 2 == 0) {
                 sb.append("Even");
-            }else {
+            } else {
                 sb.append("Odd");
             }
         }
         return sb.toString();
     }
+
+    public static int binaryDigiSum(int n) {
+        int sum = 0;
+        while (n > 0) {
+            int digit = n % 2;
+            sum += digit;
+            n /= 2;
+        }
+
+        return sum;
+    }
+
+
+    // TIME COMPLEXITY - O(N LOG N)
+    // SPACE COMPLEXITY- O(N)
+    public static int[] uniqueSecondLargestAndSmallestEle(int[] arr) {
+        // TreeSet Automatically remove duplicates and sort the array
+        TreeSet < Integer > set = new TreeSet < > ();
+
+        for (int ele: arr) {
+            set.add(ele);
+        }
+
+        ArrayList < Integer > list = new ArrayList < > (set);
+
+        int[] ans = new int[2];
+
+        ans[0] = list.get(1); // second smallest
+        ans[1] = list.get(list.size() - 2); // second largest
+
+        return ans;
+    }
+    // TIME COMPLEXITY - O(N)
+    // SPACE COMPLEXITY- O(1)
+
+    public static int[] uniqueSecondLargestAndSmallestEle2(int[] arr) {
+        int min1 = Integer.MAX_VALUE, min2 = Integer.MAX_VALUE;
+        int max1 = Integer.MIN_VALUE, max2 = Integer.MIN_VALUE;
+
+        for (int ele: arr) {
+            if (ele < min1) {
+                min2 = min1;
+                min1 = ele;
+            } else if (ele > min1 && ele < min2) {
+                min2 = ele;
+            }
+
+            if (ele > max1) {
+                max2 = max1;
+                max1 = ele;
+            } else if (ele < max1 && ele > max2) {
+                max2 = ele;
+            }
+        }
+        if (min2 == Integer.MAX_VALUE || max2 == Integer.MIN_VALUE) {
+            throw new IllegalArgumentException("Array must have at least two unique elements");
+        }
+        return new int[] {
+            min2,
+            max2
+        };
+    }
+
     public static void main(String[] args) throws java.lang.Exception
     {
-        int [] a = {1,2,3,4,5,6,7};
-        
+        int[] a = {
+            3,
+            1,
+            2,
+            3,
+            4,
+            1
+        };
+
         rotateArrayByK(a, 3);
-        System.out.println(Arrays.toString(a));
-        
-        System.out.println(evenOddEle(a));
+        // System.out.println(Arrays.toString(a));
+
+        // System.out.println(evenOddEle(a));
+
+        // System.out.println(binaryDigiSum(15));
+
+        System.out.println(Arrays.toString(uniqueSecondLargestAndSmallestEle2(a)));
 
     }
 }
