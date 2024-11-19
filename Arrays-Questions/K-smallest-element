@@ -1,0 +1,12 @@
+ public static int kthSmallest(int[] arr, int k) {
+       PriorityQueue<Integer> pq = new PriorityQueue<>(a,b -> b-a);
+       
+       for(int ele: arr) {
+           pq.add(ele);
+           
+           if(pq.size() > k) {
+               pq.poll();
+           }
+       }
+       return pq.peek();
+    }
